@@ -4,9 +4,9 @@ import { Schema, Repository } from 'redis-om';
 const client = createClient({ url: process.env.REDIS_URL });
 
 async function connect() {
-    if (!client.isOpen) {
-        await client.connect();
-    }
+  if (!client.isOpen) {
+    await client.connect();
+  }
 }
 
 const schema = new Schema(
@@ -23,10 +23,10 @@ const schema = new Schema(
 );
 
 export async function createCar(data) {
-    await connect();
-  
-    const repository = new Repository(schema, client);
-  
-    const id = await repository.save(data);
-    return id;
+  await connect();
+
+  const repository = new Repository(schema, client);
+
+  const id = await repository.save(data);
+  return id;
 }
